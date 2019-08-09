@@ -3,6 +3,7 @@ import axios from "axios";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 
+
 const SignupForm = ({ errors, touched, values, handleSubmit, status }) => {
   const [signup, setSignup] = useState([]);
   
@@ -44,11 +45,11 @@ const SignupForm = ({ errors, touched, values, handleSubmit, status }) => {
         <button type="submit">Submit!</button>
       </Form>
 
-      {signup.map(submitted => {
+      {/* {signup.map(submitted => {
         return <p 
         key={submitted.username}> {submitted.email} {submitted.password}</p>
         
-      })}
+      })} */}
 
     </div>
   );
@@ -72,7 +73,7 @@ const FormikSignUpForm = withFormik({
 
   handleSubmit(values, { setStatus }) {
     axios
-      .post("https://reqres.in/api/users/", values)
+      .post("http://localhost:5000/api/register", values)
       .then(res => {
         setStatus(res.data);
         console.log(res.data)
@@ -80,5 +81,7 @@ const FormikSignUpForm = withFormik({
       .catch(err => console.log(err.response));
   }
 })(SignupForm);
+
+
 
 export default FormikSignUpForm;
