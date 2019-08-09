@@ -7,7 +7,7 @@ const Registered = props => {
   useEffect(() => {
     const getRegistered = () => {
       axios
-        .get('http://localhost:5000/api/restricted/users')
+        .get('http://localhost:5000/api/restricted/data')
         .then(response => {
           setRegistered(response.data);
           console.log(response.data)
@@ -22,10 +22,10 @@ const Registered = props => {
   
   return (
     <div className="registered-list">
-        <h1>Master List of User Names & Passwords</h1>
+        <h1>Random Recipe Information</h1>
     {registered.map(submitted => {
         return <p 
-        key={submitted.id}> <ul> <li><h4>{submitted.username}</h4> </li> {submitted.password} </ul></p> 
+        key={submitted.id}> <ul> <li><h4>{submitted.name}</h4> </li> {submitted.course} </ul></p> 
         
       })}
     

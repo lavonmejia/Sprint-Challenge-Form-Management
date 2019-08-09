@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
+import RandomComponent from "./Classy";
 
 
 const SignupForm = ({ errors, touched, values, handleSubmit, status }) => {
@@ -16,6 +17,8 @@ const SignupForm = ({ errors, touched, values, handleSubmit, status }) => {
   return (
     <div className="signup-form">
       <h1>Super Exclusive SignUp Form</h1>
+      <RandomComponent/>
+ 
       <Form>
         <Field type="text" name="username" placeholder="Your Name" />
         {touched.username && errors.username && (
@@ -42,14 +45,10 @@ const SignupForm = ({ errors, touched, values, handleSubmit, status }) => {
           <span className="checkmark" />
         </label>
 
-        <button type="submit">Submit!</button>
+        <button type="submit" data-testid='submit' >Submit!</button>
       </Form>
 
-      {/* {signup.map(submitted => {
-        return <p 
-        key={submitted.username}> {submitted.email} {submitted.password}</p>
-        
-      })} */}
+      
 
     </div>
   );
